@@ -1,77 +1,306 @@
-<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>CazaOferta V4</title>
-<style>
-:root{--bg:#f6f7fb;--ink:#18202d;--muted:#697386;--line:#e5e8ef;--accent:#f6aa00;--dark:#111827}*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:var(--bg);color:var(--ink)}header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:5}.nav{max-width:1200px;margin:auto;padding:15px 22px;display:flex;justify-content:space-between}.logo{font-size:26px;font-weight:900}.logo b{color:#d88b00}.hero{background:linear-gradient(135deg,#101827,#26354d);color:white}.heroIn{max-width:1200px;margin:auto;padding:65px 22px;text-align:center}h1{font-size:clamp(38px,6vw,64px);margin:18px auto;max-width:850px}.hero p{max-width:680px;margin:auto;color:#cbd5e1;font-size:18px;line-height:1.5}.pill{display:inline-block;padding:8px 13px;border-radius:999px;background:#ffffff18;color:#ffe3a0;font-size:12px;font-weight:bold}.search{max-width:760px;margin:30px auto 0;background:white;padding:7px;border-radius:17px;display:flex}.search input{flex:1;border:0;outline:0;padding:14px;font-size:16px}.search button{border:0;background:var(--accent);border-radius:12px;padding:0 24px;font-weight:bold}main{max-width:1200px;margin:auto;padding:42px 22px 60px}.head{display:flex;justify-content:space-between;align-items:end}h2{font-size:30px;margin:6px 0}.eyebrow{font-size:12px;color:#b66d00;font-weight:bold;text-transform:uppercase}#count{color:var(--muted)}.filters{display:flex;gap:8px;flex-wrap:wrap;margin:24px 0}.filter{background:white;border:1px solid var(--line);border-radius:999px;padding:99px 14px;font-weight:bold;cursor:pointer}.filter.active{background:var(--dark);color:white}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:18px}.card{background:white;border:1px solid var(--line);border-radius:22px;overflow:hidden;display:flex;flex-direction:column}.visual{height:155px;display:grid;place-items:center;font-size:70px;background:linear-gradient(135deg,#edf1ff,#fff)}.body{padding:17px;display:flex;flex-direction:column;flex:1}.meta{display:flex;justify-content:space-between;font-size:11px;text-transform:uppercase;color:#7b8492}.meta b{background:#fff4d7;color:#865300;padding:6px 8px;border-radius:999px;text-transform:none}h3{font-size:18px;margin:13px 0 7px}.body p{font-size:13px;color:var(--muted);line-height:1.45;min-height:38px}.signals{display:flex;gap:7px;flex-wrap:wrap;margin:12px 0}.signals span{background:#f3f5f7;padding:7px 8px;border-radius:8px;font-size:12px;font-weight:bold}.signals .hot{background:#eaf8f0;color:#087443}.body a{margin-top:auto;text-align:center;background:var(--dark);color:white;text-decoration:none;padding:13px;border-radius:12px;font-weight:bold}small{font-size:10px;color:#929baa;margin-top:9px}.how{margin-top:55px;background:white;border:1px solid var(--line);border-radius:25px;padding:30px}.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}.step{background:#f8fafc;padding:18px;border-radius:16px}.num{width:31px;height:31px;border-radius:50%;background:var(--accent);display:grid;place-items:center;font-weight:bold;margin-bottom:10px}footer{background:var(--dark);color:#9ca7b8;padding:38px 22px;font-size:12px}.foot{max-width:1200px;margin:auto;line-height:1.6}.foot strong{color:white;font-size:15px}@media(max-width:700px){.steps{grid-template-columns:1fr 1fr}.head{flex-direction:column;align-items:start;gap:5px}}@media(max-width:430px){.steps{grid-template-columns:1fr}}
-</style></head><body>
-<header><div class="nav"><div class="logo">🦊 Caza<b>Oferta</b></div><div>10 productos</div></div></header>
-<section class="hero"><div class="heroIn"><div class="pill">CAZAOFERTA V4 · SELECCIÓN INICIAL</div><h1>Encuentra algo que valga la pena revisar.</h1><p>Productos seleccionados por señales de demanda y potencial de oportunidad. Tú verificas los detalles y decides.</p><div class="search"><input id="q" placeholder="Busca audífonos, cámara, tablet, gaming..." oninput="apply()"><button onclick="apply()">Buscar</button></div></div></section>
-<main><div class="head"><div><div class="eyebrow">10 enlaces reales integrados</div><h2>🔥 Productos seleccionados</h2></div><div id="count">10 productos</div></div>
-<div class="filters" id="filters"><button class="filter active" data-f="todos">Todos</button><button class="filter" data-f="audio">🎧 Audio</button><button class="filter" data-f="wearables">⌚ Wearables</button><button class="filter" data-f="seguridad">📷 Seguridad</button><button class="filter" data-f="energía">🔋 Energía</button><button class="filter" data-f="accesorios">📱 Accesorios</button><button class="filter" data-f="tablets">📲 Tablets</button><button class="filter" data-f="gaming">🎮 Gaming</button></div>
-<div class="grid" id="grid">
-<article class="card" data-cat="audio" data-search="xiaomi redmi buds 6 play audio alta demanda">
-<div class="visual">🎧</div><div class="body"><div class="meta"><span>Audio</span><b>🦊 92/100</b></div>
-<h3>Xiaomi Redmi Buds 6 Play</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Alta demanda</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/2dxgimX" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="audio" data-search="1hora aut205 audio alta demanda">
-<div class="visual">🎧</div><div class="body"><div class="meta"><span>Audio</span><b>🦊 89/100</b></div>
-<h3>1Hora AUT205</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Alta demanda</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/2FtFhvh" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="audio" data-search="sony wh-ch520 audio alta demanda">
-<div class="visual">🎶</div><div class="body"><div class="meta"><span>Audio</span><b>🦊 87/100</b></div>
-<h3>Sony WH-CH520</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Alta demanda</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/2XQV37A" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="wearables" data-search="xiaomi redmi watch 5 active wearables alta demanda">
-<div class="visual">⌚</div><div class="body"><div class="meta"><span>Wearables</span><b>🦊 90/100</b></div>
-<h3>Xiaomi Redmi Watch 5 Active</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Alta demanda</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/2VsM6PP" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="seguridad" data-search="cámara wifi 360° seguridad muy buscado">
-<div class="visual">📷</div><div class="body"><div class="meta"><span>Seguridad</span><b>🦊 91/100</b></div>
-<h3>Cámara WiFi 360°</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Muy buscado</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/1pbjott" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="energía" data-search="power bank 1hora 10,000 mah energía alta demanda">
-<div class="visual">🔋</div><div class="body"><div class="meta"><span>Energía</span><b>🦊 94/100</b></div>
-<h3>Power Bank 1HORA 10,000 mAh</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Alta demanda</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/2wP2VJL" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="accesorios" data-search="cargador rápido 35w accesorios compra impulsiva">
-<div class="visual">🔌</div><div class="body"><div class="meta"><span>Accesorios</span><b>🦊 91/100</b></div>
-<h3>Cargador rápido 35W</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Compra impulsiva</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/1cvPPRF" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="accesorios" data-search="kit funda magsafe + micas accesorios precio accesible">
-<div class="visual">📱</div><div class="body"><div class="meta"><span>Accesorios</span><b>🦊 88/100</b></div>
-<h3>Kit funda MagSafe + micas</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Precio accesible</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/1CaCvxN" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="tablets" data-search="samsung galaxy tab a11 128 gb tablets ticket alto">
-<div class="visual">📲</div><div class="body"><div class="meta"><span>Tablets</span><b>🦊 86/100</b></div>
-<h3>Samsung Galaxy Tab A11 128 GB</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Ticket alto</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/2iGHmkR" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
-<article class="card" data-cat="gaming" data-search="soporte ps5 + base para control gaming nicho gaming">
-<div class="visual">🎮</div><div class="body"><div class="meta"><span>Gaming</span><b>🦊 82/100</b></div>
-<h3>Soporte PS5 + base para control</h3><p>Producto seleccionado para nuestra primera colección de oportunidades.</p>
-<div class="signals"><span class="hot">🔥 Nicho gaming</span><span>⭐ Seleccionado</span></div>
-<a href="https://meli.la/2dULAfw" target="_blank" rel="nofollow sponsored noopener">🛒 Ver oferta</a>
-<small>Precio y disponibilidad pueden cambiar. Verifica la publicación antes de comprar.</small></div></article>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CazaOferta - Las mejores ofertas del día</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #ff7d00;
+      --primary-dark: #e06c00;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --discount: #ef4444;
+    }
 
-</div>
-<section class="how"><h2>¿Cómo funciona CazaOferta?</h2><div class="steps"><div class="step"><div class="num">1</div><b>Seleccionamos</b><p>Buscamos señales de interés y demanda.</p></div><div class="step"><div class="num">2</div><b>Organizamos</b><p>Facilitamos explorar categorías y productos.</p></div><div class="step"><div class="num">3</div><b>Puntuamos</b><p>El índice es una referencia interna, no una garantía.</p></div><div class="step"><div class="num">4</div><b>Tú decides</b><p>Verificas precio y condiciones en la publicación.</p></div></div></section></main>
-<footer><div class="foot"><strong>🦊 CazaOferta</strong><br>Proyecto independiente. Algunos enlaces pueden generar una comisión para CazaOferta sin costo adicional para el usuario. Los precios, promociones y disponibilidad pueden cambiar; verifica siempre la información final antes de comprar.</div></footer>
-<script>
-let cat='todos';const fs=document.querySelectorAll('.filter');fs.forEach(b=>b.onclick=()=>{fs.forEach(x=>x.classList.remove('active'));b.classList.add('active');cat=b.dataset.f;apply();});
-function apply(){let q=document.getElementById('q').value.toLowerCase().trim(),n=0;document.querySelectorAll('.card').forEach(c=>{let ok=(cat==='todos'||c.dataset.cat===cat)&&(!q||c.dataset.search.includes(q));c.style.display=ok?'flex':'none';if(ok)n++;});document.getElementById('count').textContent=n+' producto'+(n===1?'':'s');}
-</script></body></html>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding-bottom: 40px;
+    }
+
+    header {
+      background: linear-gradient(135deg, #1e293b, #0f172a);
+      border-bottom: 2px solid var(--primary);
+      padding: 20px 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.5);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+    .brand i { font-size: 2rem; color: var(--primary); }
+    .brand h1 { font-size: 1.8rem; font-weight: 800; letter-spacing: -0.5px; }
+    .brand span { color: var(--primary); }
+
+    .search-bar {
+      max-width: 500px;
+      margin: 0 auto 12px;
+      position: relative;
+    }
+    .search-bar input {
+      width: 100%;
+      padding: 12px 40px 12px 15px;
+      border-radius: 25px;
+      border: 1px solid #334155;
+      background: #0f172a;
+      color: #fff;
+      font-size: 0.95rem;
+      outline: none;
+    }
+    .search-bar input:focus { border-color: var(--primary); }
+    .search-bar i {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+
+    .categories {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      padding: 5px 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      scrollbar-width: none;
+    }
+    .categories::-webkit-scrollbar { display: none; }
+    .cat-btn {
+      background: #334155;
+      color: var(--text);
+      border: none;
+      padding: 8px 16px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      white-space: nowrap;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .cat-btn.active, .cat-btn:hover {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 25px auto;
+      padding: 0 15px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      border: 1px solid #334155;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 8px 25px rgba(255, 125, 0, 0.15);
+    }
+
+    .badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background: var(--discount);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 4px 8px;
+      border-radius: 6px;
+      z-index: 2;
+    }
+
+    .card-img {
+      width: 100%;
+      height: 200px;
+      background: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+    }
+    .card-img img {
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .card-body {
+      padding: 15px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-title {
+      font-size: 0.95rem;
+      line-height: 1.3;
+      height: 2.6em;
+      overflow: hidden;
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .prices {
+      margin-top: auto;
+      margin-bottom: 12px;
+    }
+    .price-old {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .price-current {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: #22c55e;
+    }
+
+    .btn-buy {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      background: var(--primary);
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      font-weight: 700;
+      border-radius: 8px;
+      transition: background 0.2s;
+    }
+    .btn-buy:hover { background: var(--primary-dark); }
+
+    .loading, .empty {
+      text-align: center;
+      padding: 50px 20px;
+      color: var(--text-muted);
+      grid-column: 1 / -1;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="brand">
+      <i class="fa-solid fa-fox"></i>
+      <h1>Caza<span>Oferta</span></h1>
+    </div>
+
+    <div class="search-bar">
+      <input type="text" id="searchInput" placeholder="Buscar productos u ofertas...">
+      <i class="fa-solid fa-magnifying-glass"></i>
+    </div>
+
+    <div class="categories" id="categoryContainer">
+      <button class="cat-btn active" onclick="filtrar('Todas')">Todas</button>
+      <button class="cat-btn" onclick="filtrar('Celulares y Telefonía')">Celulares</button>
+      <button class="cat-btn" onclick="filtrar('Consolas y Videojuegos')">Videojuegos</button>
+      <button class="cat-btn" onclick="filtrar('Computación')">Computación</button>
+      <button class="cat-btn" onclick="filtrar('Hogar, Muebles y Jardín')">Hogar</button>
+      <button class="cat-btn" onclick="filtrar('Ropa y Calzado')">Ropa</button>
+      <button class="cat-btn" onclick="filtrar('Accesorios para Vehículos')">Automotriz</button>
+    </div>
+  </header>
+
+  <div class="container">
+    <div class="grid" id="productGrid">
+      <div class="loading">
+        <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+        <p style="margin-top: 10px;">Cargando las mejores ofertas...</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let todasLasOfertas = [];
+    let categoriaActual = 'Todas';
+
+    async function cargarOfertas() {
+      try {
+        const res = await fetch('ofertas.json');
+        if (!res.ok) throw new Error("No se encontró el catálogo todavía");
+        todasLasOfertas = await res.json();
+        renderizar();
+      } catch (err) {
+        document.getElementById('productGrid').innerHTML = `
+          <div class="empty">
+            <p>¡El robot está preparando el catálogo inicial!</p>
+            <p style="font-size: 0.85rem; margin-top: 5px;">Recarga esta página en un par de minutos.</p>
+          </div>
+        `;
+      }
+    }
+
+    function renderizar() {
+      const grid = document.getElementById('productGrid');
+      const busqueda = document.getElementById('searchInput').value.toLowerCase();
+
+      const filtrados = todasLasOfertas.filter(p => {
+        const coincideCat = categoriaActual === 'Todas' || p.categoria === categoriaActual;
+        const coincideBusqueda = p.titulo.toLowerCase().includes(busqueda);
+        return coincideCat && coincideBusqueda;
+      });
+
+      if (filtrados.length === 0) {
+        grid.innerHTML = '<div class="empty"><p>No encontramos ofertas con ese criterio de búsqueda.</p></div>';
+        return;
+      }
+
+      grid.innerHTML = filtrados.map(p => `
+        <div class="card">
+          <span class="badge">-${p.descuento}%</span>
+          <div class="card-img">
+            <img src="${p.imagen}" alt="${p.titulo}" loading="lazy">
+          </div>
+          <div class="card-body">
+            <div class="card-title">${p.titulo}</div>
+            <div class="prices">
+              <div class="price-old">$${p.precio_anterior.toLocaleString('es-MX')}</div>
+              <div class="price-current">$${p.precio_oferta.toLocaleString('es-MX')}</div>
+            </div>
+            <a href="${p.link}" target="_blank" rel="noopener" class="btn-buy">Ver Oferta</a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filtrar(cat) {
+      categoriaActual = cat;
+      document.querySelectorAll('.cat-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.trim() === cat || (cat === 'Todas' && btn.innerText.trim() === 'Todas'));
+      });
+      renderizar();
+    }
+
+    document.getElementById('searchInput').addEventListener('input', renderizar);
+    document.addEventListener('DOMContentLoaded', cargarOfertas);
+  </script>
+</body>
+</html>
