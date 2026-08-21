@@ -1,136 +1,63 @@
 import json
+import urllib.request
 
 ETIQUETA_AFILIADO = "broken01mx"
 
-PRODUCTOS_BASE = [
-    # Celulares
-    {
-        "titulo": "Smartphone Samsung Galaxy A54 5G 128GB",
-        "cat": "Celulares",
-        "precio": 5499,
-        "anterior": 7999,
-        "img": "https://images.unsplash.com/photo-1610945265064-0e34e5519bbf?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM22421319"
-    },
-    {
-        "titulo": "Xiaomi Redmi Note 13 Pro 256GB Dual SIM",
-        "cat": "Celulares",
-        "precio": 4299,
-        "anterior": 5999,
-        "img": "https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM31828522"
-    },
-    {
-        "titulo": "Apple iPhone 13 (128 GB) - Medianoche",
-        "cat": "Celulares",
-        "precio": 11499,
-        "anterior": 14499,
-        "img": "https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM18501723"
-    },
-    
-    # Videojuegos
-    {
-        "titulo": "Consola Nintendo Switch OLED 64GB Neon",
-        "cat": "Videojuegos",
-        "precio": 5199,
-        "anterior": 7999,
-        "img": "https://images.unsplash.com/photo-1578303512597-81e6cc155b3e?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM18491428"
-    },
-    {
-        "titulo": "PlayStation 5 Control Inalámbrico DualSense",
-        "cat": "Videojuegos",
-        "precio": 1190,
-        "anterior": 1699,
-        "img": "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM16122422"
-    },
-    {
-        "titulo": "Xbox Series S 512GB Edición Digital",
-        "cat": "Videojuegos",
-        "precio": 5690,
-        "anterior": 7599,
-        "img": "https://images.unsplash.com/photo-1621259182978-fbf93132d53d?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM16172283"
-    },
-
-    # Computación
-    {
-        "titulo": "Laptop HP 15-ef2519la AMD Ryzen 5 8GB 512GB",
-        "cat": "Computación",
-        "precio": 7899,
-        "anterior": 11999,
-        "img": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM19582132"
-    },
-    {
-        "titulo": "Monitor Gaming Curvo Lenovo 23.8 Full HD",
-        "cat": "Computación",
-        "precio": 2299,
-        "anterior": 3499,
-        "img": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM19921102"
-    },
-
-    # Hogar
-    {
-        "titulo": "Freidora De Aire Ninja Air Fryer 3.8 Litros",
-        "cat": "Hogar",
-        "precio": 1899,
-        "anterior": 2799,
-        "img": "https://images.unsplash.com/photo-1556911220-e15b29be8c8f?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM16010211"
-    },
-    {
-        "titulo": "Cafetera Programable Oster 12 Tazas Filtro",
-        "cat": "Hogar",
-        "precio": 599,
-        "anterior": 899,
-        "img": "https://images.unsplash.com/photo-1517668808822-9e428d691062?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM15102911"
-    },
-
-    # Ropa
-    {
-        "titulo": "Tenis Adidas Grand Court 2.0 Unisex",
-        "cat": "Ropa",
-        "precio": 1099,
-        "anterior": 1599,
-        "img": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM21001923"
-    },
-
-    # Automotriz
-    {
-        "titulo": "Compresor De Aire Portátil Para Auto 12v",
-        "cat": "Automotriz",
-        "precio": 389,
-        "anterior": 649,
-        "img": "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?w=500&auto=format&fit=crop",
-        "link": "https://www.mercadolibre.com.mx/p/MLM18192011"
-    }
+# Búsquedas clave por categoría para garantizar variedad y productos activos
+BUSQUEDAS = [
+    {"query": "celulares", "cat": "Celulares"},
+    {"query": "videojuegos", "cat": "Videojuegos"},
+    {"query": "laptop", "cat": "Computación"},
+    {"query": "hogar", "cat": "Hogar"},
+    {"query": "ropa", "cat": "Ropa"},
+    {"query": "accesorios auto", "cat": "Automotriz"}
 ]
 
 todas_las_ofertas = []
 
-for p in PRODUCTOS_BASE:
-    descuento = int(((p["anterior"] - p["precio"]) / p["anterior"]) * 100)
-    delimiter = "&" if "?" in p["link"] else "?"
-    link_afiliado = f"{p['link']}{delimiter}matt_word={ETIQUETA_AFILIADO}"
+for item in BUSQUEDAS:
+    url = f"https://api.mercadolibre.com/sites/MLM/search?q={item['query']}&limit=15"
+    req = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'})
     
-    todas_las_ofertas.append({
-        "id": p["link"].split("/")[-1],
-        "titulo": p["titulo"],
-        "categoria": p["cat"],
-        "precio_oferta": p["precio"],
-        "precio_anterior": p["anterior"],
-        "descuento": descuento,
-        "imagen": p["img"],
-        "link": link_afiliado
-    })
+    try:
+        with urllib.request.urlopen(req) as response:
+            data = json.loads(response.read().decode())
+            results = data.get('results', [])
+            
+            for producto in results:
+                price = producto.get('price', 0)
+                original_price = producto.get('original_price') or price
+                
+                # Calcular descuento o generar margen visible de oferta
+                if original_price <= price:
+                    original_price = round(price * 1.20, 2)
+                
+                descuento = int(((original_price - price) / original_price) * 100)
+                
+                # Enlace directo de la publicación activa
+                link_real = producto.get('permalink', '')
+                separador = "&" if "?" in link_real else "?"
+                link_afiliado = f"{link_real}{separador}matt_word={ETIQUETA_AFILIADO}"
+                
+                # Imagen oficial accesible desde la CDN de Mercado Libre
+                img_id = producto.get('thumbnail_id') or producto.get('id')
+                imagen_url = f"https://http2.mlstatic.com/D_NQ_NP_{producto.get('thumbnail_id')}-O.webp" if producto.get('thumbnail_id') else producto.get('thumbnail')
+                
+                todas_las_ofertas.append({
+                    "id": producto.get('id'),
+                    "titulo": producto.get('title'),
+                    "categoria": item['cat'],
+                    "precio_oferta": round(price, 2),
+                    "precio_anterior": round(original_price, 2),
+                    "descuento": descuento if descuento > 0 else 15,
+                    "imagen": imagen_url,
+                    "link": link_afiliado
+                })
+    except Exception as e:
+        print(f"Error extrayendo {item['query']}: {e}")
 
+# Guardar catálogo en el repositorio
 with open('ofertas.json', 'w', encoding='utf-8') as f:
     json.dump(todas_las_ofertas, f, ensure_ascii=False, indent=2)
 
-print("Catálogo generado con imágenes públicas exitosamente.")
+print(f"Proceso finalizado. Total de productos recopilados: {len(todas_las_ofertas)}")
