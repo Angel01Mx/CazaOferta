@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CazaOferta - Las mejores ofertas del día</title>
+  <title>CazaOferta - Las mejores ofertas en tiempo real</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -233,29 +233,63 @@
     <div class="grid" id="productGrid">
       <div class="loading">
         <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-        <p style="margin-top: 10px;">Cargando catálogo de ofertas...</p>
+        <p style="margin-top: 10px;">Obteniendo las mejores ofertas en tiempo real...</p>
       </div>
     </div>
   </div>
 
   <script>
+    const ETIQUETA_AFILIADO = "broken01mx";
     let todasLasOfertas = [];
     let categoriaActual = 'Todas';
 
-    async function cargarOfertas() {
-      try {
-        const res = await fetch('ofertas.json?v=' + new Date().getTime());
-        if (!res.ok) throw new Error("No existe ofertas.json");
-        todasLasOfertas = await res.json();
-        renderizar();
-      } catch (err) {
-        document.getElementById('productGrid').innerHTML = `
-          <div class="empty">
-            <p>¡Cargando el catálogo actualizado!</p>
-            <p style="font-size: 0.85rem; margin-top: 5px;">Recarga esta página en un momento.</p>
-          </div>
-        `;
-      }
+    const SECCIONES = [
+      { q: "celulares ofertas", cat: "Celulares" },
+      { q: "consolas videojuegos", cat: "Videojuegos" },
+      { q: "laptop computacion", cat: "Computación" },
+      { q: "electrodomesticos hogar", cat: "Hogar" },
+      { q: "ropa calzado", cat: "Ropa" },
+      { q: "accesorios auto", cat: "Automotriz" }
+    ];
+
+    async function obtenerOfertasMercadoLibre() {
+      const promesas = SECCIONES.map(async (sec) => {
+        try {
+          const res = await fetch(`https://api.mercadolibre.com/sites/MLM/search?q=${encodeURIComponent(sec.q)}&limit=10`);
+          const data = await res.json();
+          
+          return (data.results || []).map(p => {
+            const price = p.price || 0;
+            const originalPrice = p.original_price || (price * 1.25);
+            const descuento = Math.round(((originalPrice - price) / originalPrice) * 100);
+            
+            const linkBase = p.permalink || "";
+            const sep = linkBase.includes("?") ? "&" : "?";
+            const linkAfiliado = `${linkBase}${sep}matt_word=${ETIQUETA_AFILIADO}`;
+            
+            const thumbnailId = p.thumbnail_id || p.id;
+            const imagenUrl = thumbnailId ? `https://http2.mlstatic.com/D_NQ_NP_${thumbnailId}-O.webp` : p.thumbnail;
+
+            return {
+              id: p.id,
+              titulo: p.title,
+              categoria: sec.cat,
+              precio_oferta: Math.round(price),
+              precio_anterior: Math.round(originalPrice),
+              descuento: descuento > 0 ? descuento : 20,
+              imagen: imagenUrl,
+              link: linkAfiliado
+            };
+          });
+        } catch (e) {
+          console.error("Error al consultar Mercado Libre:", e);
+          return [];
+        }
+      });
+
+      const resultados = await Promise.all(promesas);
+      todasLasOfertas = resultados.flat();
+      renderizar();
     }
 
     function renderizar() {
@@ -263,14 +297,13 @@
       const busqueda = (document.getElementById('searchInput').value || '').toLowerCase();
 
       const filtrados = todasLasOfertas.filter(p => {
-        const catProducto = (p.categoria || '').trim();
-        const coincideCat = categoriaActual === 'Todas' || catProducto === categoriaActual;
-        const coincideBusqueda = (p.titulo || '').toLowerCase().includes(busqueda);
+        const coincideCat = categoriaActual === 'Todas' || p.categoria === categoriaActual;
+        const coincideBusqueda = p.titulo.toLowerCase().includes(busqueda);
         return coincideCat && coincideBusqueda;
       });
 
       if (filtrados.length === 0) {
-        grid.innerHTML = '<div class="empty"><p>No encontramos ofertas con ese criterio de búsqueda.</p></div>';
+        grid.innerHTML = '<div class="empty"><p>No se encontraron ofertas en esta categoría.</p></div>';
         return;
       }
 
@@ -301,7 +334,7 @@
     }
 
     document.getElementById('searchInput').addEventListener('input', renderizar);
-    document.addEventListener('DOMContentLoaded', cargarOfertas);
+    document.addEventListener('DOMContentLoaded', obtenerOfertasMercadoLibre);
   </script>
 </body>
 </html>
