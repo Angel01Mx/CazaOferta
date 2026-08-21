@@ -1,1 +1,122 @@
-[]
+[
+  {
+    "id": "MLM22421319",
+    "titulo": "Smartphone Samsung Galaxy A54 5G 128GB",
+    "categoria": "Celulares",
+    "precio_oferta": 5499,
+    "precio_anterior": 7999,
+    "descuento": 31,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_688320-MLM54930218151_042023-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM22421319?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM31828522",
+    "titulo": "Xiaomi Redmi Note 13 Pro 256GB Dual SIM",
+    "categoria": "Celulares",
+    "precio_oferta": 4299,
+    "precio_anterior": 5999,
+    "descuento": 28,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_883584-MLM74288057270_022024-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM31828522?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM18501723",
+    "titulo": "Apple iPhone 13 (128 GB) - Medianoche",
+    "categoria": "Celulares",
+    "precio_oferta": 11499,
+    "precio_anterior": 14499,
+    "descuento": 20,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_973345-MLA47781542552_102021-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM18501723?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM18491428",
+    "titulo": "Consola Nintendo Switch OLED 64GB Neon",
+    "categoria": "Videojuegos",
+    "precio_oferta": 5199,
+    "precio_anterior": 7999,
+    "descuento": 35,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_817223-MLA47920659816_102021-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM18491428?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM16122422",
+    "titulo": "PlayStation 5 Control Inalámbrico DualSense",
+    "categoria": "Videojuegos",
+    "precio_oferta": 1190,
+    "precio_anterior": 1699,
+    "descuento": 29,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_806080-MLA44347000213_122020-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM16122422?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM16172283",
+    "titulo": "Xbox Series S 512GB Edición Digital",
+    "categoria": "Videojuegos",
+    "precio_oferta": 5690,
+    "precio_anterior": 7599,
+    "descuento": 25,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_603845-MLA43863489814_102020-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM16172283?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM19582132",
+    "titulo": "Laptop HP 15-ef2519la AMD Ryzen 5 8GB 512GB",
+    "categoria": "Computación",
+    "precio_oferta": 7899,
+    "precio_anterior": 11999,
+    "descuento": 34,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_624131-MLM51336490610_082022-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM19582132?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM19921102",
+    "titulo": "Monitor Gaming Curvo Lenovo 23.8 Full HD",
+    "categoria": "Computación",
+    "precio_oferta": 2299,
+    "precio_anterior": 3499,
+    "descuento": 34,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_960416-MLM52538102391_112022-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM19921102?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM16010211",
+    "titulo": "Freidora De Aire Ninja Air Fryer 3.8 Litros",
+    "categoria": "Hogar",
+    "precio_oferta": 1899,
+    "precio_anterior": 2799,
+    "descuento": 32,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_724911-MLM51752202213_092022-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM16010211?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM15102911",
+    "titulo": "Cafetera Programable Oster 12 Tazas Filtro",
+    "categoria": "Hogar",
+    "precio_oferta": 599,
+    "precio_anterior": 899,
+    "descuento": 33,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_892113-MLA43712398112_102020-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM15102911?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM21001923",
+    "titulo": "Tenis Adidas Grand Court 2.0 Unisex",
+    "categoria": "Ropa",
+    "precio_oferta": 1099,
+    "precio_anterior": 1599,
+    "descuento": 31,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_602115-MLM53210022011_012023-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM21001923?matt_word=broken01mx"
+  },
+  {
+    "id": "MLM18192011",
+    "titulo": "Compresor De Aire Portátil Para Auto 12v",
+    "categoria": "Automotriz",
+    "precio_oferta": 389,
+    "precio_anterior": 649,
+    "descuento": 40,
+    "imagen": "https://http2.mlstatic.com/D_NQ_NP_701221-MLM49012389102_022022-O.webp",
+    "link": "https://www.mercadolibre.com.mx/p/MLM18192011?matt_word=broken01mx"
+  }
+]
