@@ -220,12 +220,12 @@
 
     <div class="categories" id="categoryContainer">
       <button class="cat-btn active" onclick="filtrar('Todas')">Todas</button>
-      <button class="cat-btn" onclick="filtrar('Celulares y Telefonía')">Celulares</button>
-      <button class="cat-btn" onclick="filtrar('Consolas y Videojuegos')">Videojuegos</button>
+      <button class="cat-btn" onclick="filtrar('Celulares')">Celulares</button>
+      <button class="cat-btn" onclick="filtrar('Videojuegos')">Videojuegos</button>
       <button class="cat-btn" onclick="filtrar('Computación')">Computación</button>
-      <button class="cat-btn" onclick="filtrar('Hogar, Muebles y Jardín')">Hogar</button>
-      <button class="cat-btn" onclick="filtrar('Ropa y Calzado')">Ropa</button>
-      <button class="cat-btn" onclick="filtrar('Accesorios para Vehículos')">Automotriz</button>
+      <button class="cat-btn" onclick="filtrar('Hogar')">Hogar</button>
+      <button class="cat-btn" onclick="filtrar('Ropa')">Ropa</button>
+      <button class="cat-btn" onclick="filtrar('Automotriz')">Automotriz</button>
     </div>
   </header>
 
@@ -233,7 +233,7 @@
     <div class="grid" id="productGrid">
       <div class="loading">
         <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
-        <p style="margin-top: 10px;">Cargando las mejores ofertas...</p>
+        <p style="margin-top: 10px;">Cargando catálogo de ofertas...</p>
       </div>
     </div>
   </div>
@@ -244,15 +244,15 @@
 
     async function cargarOfertas() {
       try {
-        const res = await fetch('ofertas.json');
-        if (!res.ok) throw new Error("No se encontró el catálogo todavía");
+        const res = await fetch('ofertas.json?v=' + new Date().getTime());
+        if (!res.ok) throw new Error("No existe ofertas.json");
         todasLasOfertas = await res.json();
         renderizar();
       } catch (err) {
         document.getElementById('productGrid').innerHTML = `
           <div class="empty">
-            <p>¡El robot está preparando el catálogo inicial!</p>
-            <p style="font-size: 0.85rem; margin-top: 5px;">Recarga esta página en un par de minutos.</p>
+            <p>¡Cargando el catálogo actualizado!</p>
+            <p style="font-size: 0.85rem; margin-top: 5px;">Recarga esta página en un momento.</p>
           </div>
         `;
       }
@@ -260,11 +260,12 @@
 
     function renderizar() {
       const grid = document.getElementById('productGrid');
-      const busqueda = document.getElementById('searchInput').value.toLowerCase();
+      const busqueda = (document.getElementById('searchInput').value || '').toLowerCase();
 
       const filtrados = todasLasOfertas.filter(p => {
-        const coincideCat = categoriaActual === 'Todas' || p.categoria === categoriaActual;
-        const coincideBusqueda = p.titulo.toLowerCase().includes(busqueda);
+        const catProducto = (p.categoria || '').trim();
+        const coincideCat = categoriaActual === 'Todas' || catProducto === categoriaActual;
+        const coincideBusqueda = (p.titulo || '').toLowerCase().includes(busqueda);
         return coincideCat && coincideBusqueda;
       });
 
@@ -277,7 +278,7 @@
         <div class="card">
           <span class="badge">-${p.descuento}%</span>
           <div class="card-img">
-            <img src="${p.imagen}" alt="${p.titulo}" loading="lazy">
+            <img src="${p.imagen}" alt="${p.titulo}" loading="lazy" onerror="this.src='https://via.placeholder.com/200?text=Oferta'">
           </div>
           <div class="card-body">
             <div class="card-title">${p.titulo}</div>
@@ -294,7 +295,7 @@
     function filtrar(cat) {
       categoriaActual = cat;
       document.querySelectorAll('.cat-btn').forEach(btn => {
-        btn.classList.toggle('active', btn.innerText.trim() === cat || (cat === 'Todas' && btn.innerText.trim() === 'Todas'));
+        btn.classList.toggle('active', btn.innerText.trim() === cat);
       });
       renderizar();
     }
