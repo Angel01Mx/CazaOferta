@@ -1,0 +1,29 @@
+name: Actualizador de Ofertas CazaOferta
+
+on:
+  schedule:
+    - cron: '0 12 * * *' # Se ejecuta diario a las 6:00 AM hora México
+  workflow_dispatch: # Permite ejecutarlo manualmente cuando quieras
+
+jobs:
+  actualizar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Clonar Repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Ejecutar Extractor de Ofertas
+        run: python actualizar_ofertas.py
+
+      - name: Guardar y Publicar
+        run: |
+          git config --global user.name "CazaOferta Bot"
+          git config --global user.email "bot@cazaoferta.com"
+          git add ofertas.json
+          git commit -m "Auto-actualización de catálogo" || exit 0
+          git push
