@@ -1,17 +1,19 @@
 import urllib.request
 import json
 
-# TU ID DE AFILIADO DE MERCADO LIBRE (Cámbialo si ya tienes uno, o déjalo así por ahora)
 AFILIADO_TAG = "TU_TAG_AQUI" 
-
-# Categoría a buscar (ejemplo: Electrónicos/Tecnología en México)
 URL_API = "https://api.mercadolibre.com/sites/MLM/search?q=ofertas&limit=12"
 
 def obtener_ofertas():
-    req = urllib.request.Request(URL_API, headers={'User-Agent': 'Mozilla/5.0'})
-    response = urllib.request.urlopen(req)
-    data = json.loads(response.read().decode())
-    return data.get('results', [])
+    headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)'}
+    req = urllib.request.Request(URL_API, headers=headers)
+    try:
+        with urllib.request.urlopen(req) as response:
+            data = json.loads(response.read().decode())
+            return data.get('results', [])
+    except Exception as e:
+        print(f"Error al obtener ofertas: {e}")
+        return []
 
 def generar_html(productos):
     cards_html = ""
@@ -22,10 +24,8 @@ def generar_html(productos):
         imagen = prod.get('thumbnail', '').replace("http://", "https://")
         link_original = prod.get('permalink', '#')
         
-        # Inyección de link con tag de afiliado
         link_afiliado = f"{link_original}?matt_tool=12345678&matt_word={AFILIADO_TAG}" if AFILIADO_TAG != "TU_TAG_AQUI" else link_original
         
-        # Cálculo del descuento aproximado
         descuento = ""
         if precio_original and precio_original > precio:
             porcentaje = int(((precio_original - precio) / precio_original) * 100)
@@ -69,4 +69,3 @@ def generar_html(productos):
 if __name__ == "__main__":
     productos = obtener_ofertas()
     generar_html(productos)
-    print("¡index.html generado exitosamente con ofertas en vivo!")
